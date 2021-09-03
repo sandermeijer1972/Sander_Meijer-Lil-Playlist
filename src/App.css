@@ -111,6 +111,34 @@ h1::after {
     cursor: pointer;
 }
 
+.invoer button:hover {
+    background-color: #CCF5FF;
+}
+
+.leegmaken {
+    grid-area: D;
+    background-color: #006680;
+    border: solid 3px #002933;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 20px;
+    width: 95%;
+    text-align: center;
+}
+
+.leegmaken button {
+    background-color: #66E0FF;
+    width: 180px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.leegmaken button:hover {
+    background-color: red;
+}
+
 .footer {
     font-size: 12px;
     text-align: center;

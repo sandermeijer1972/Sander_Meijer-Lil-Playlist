@@ -46,7 +46,9 @@ class SongForm extends React.Component {
                     genre: "",
                     stars: ""
                 })           
-            }             
+            } else {
+                alert("Als je niet alle velden invult, wordt er geen nieuw nummer toegevoegd aan de afspeellijst! Graag een titel, artiest, het genre en een waardering meegeven!")
+            }         
         }
         return (
             <form className="invoer" onSubmit={onSubmit}>

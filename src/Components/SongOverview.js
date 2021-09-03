@@ -1,6 +1,7 @@
 import React from "react"
 import SongList from "./SongList"
 import SongForm from "./SongForm"
+import SongDelete from "./SongDelete"
 
 class SongOverview extends React.Component {
     
@@ -35,10 +36,14 @@ class SongOverview extends React.Component {
             const newSong = {id: this.state.songs.length + 1, title: song.title, artist: song.artist, genre: song.genre, stars: song.stars}
             this.setState({songs: this.state.songs.concat(newSong)})
         }
+        const emptySongs = () => {
+            this.setState({songs: []})
+        }
         return (
             <div className="overview">
                 <SongList songs={this.state.songs} />
                 <SongForm onSubmit={addNewSong}/>
+                <SongDelete songs={this.state.songs} handleClickDeleteSongs={emptySongs} />
             </div>
         )
     }
