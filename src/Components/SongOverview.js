@@ -2,6 +2,7 @@ import React from "react"
 import SongList from "./SongList"
 import SongForm from "./SongForm"
 import SongDelete from "./SongDelete"
+import SongSort from "./SongSort"
 
 class SongOverview extends React.Component {
     
@@ -27,23 +28,58 @@ class SongOverview extends React.Component {
                 {id: 16, title: "Domino", artist: "Clouseau", genre: "Vlaamse vrienden", stars: "☆"},
                 {id: 17, title: "I got 5 on it", artist: "Luniz", genre: "No-nonsense Nineties", stars: "☆☆☆"},
                 {id: 18, title: "Dodenrit", artist: "Drs.P", genre: "Nederlandstalig", stars: "☆☆☆☆☆"}
-            ]
+            ],
+            sort: ""
         }
     }
 
     render() {
+        const capitalize = (str) => {            
+            return str.charAt(0).toUpperCase() + str.slice(1)
+        }
         const addNewSong = song => {
-            const newSong = {id: this.state.songs.length + 1, title: song.title, artist: song.artist, genre: song.genre, stars: song.stars}
+            const newSong = {
+                id: this.state.songs.length + 1,
+                title: capitalize(song.title),
+                artist: capitalize(song.artist), 
+                genre: song.genre, 
+                stars: song.stars
+            }
             this.setState({songs: this.state.songs.concat(newSong)})
         }
         const emptySongs = () => {
             this.setState({songs: []})
+        }
+        const sortSongs = () => {
+            switch(this.state.sort) {
+                case "TAZ":
+                    return this.setState({songs: this.state.songs.sort((a,b) => (a.title > b.title) ? 1 : -1)})
+                    break
+                case "TZA":
+                    return this.setState({songs: this.state.songs.sort((a,b) => (a.title > b.title) ? -1 : 1)})
+                    break
+                case "AAZ":
+                    return this.setState({songs: this.state.songs.sort((a,b) => (a.artist > b.artist ) ? 1 : -1)})
+                    break
+                case "AZA":
+                    return this.setState({songs: this.state.songs.sort((a,b) => (a.artist > b.artist ) ? -1 : 1)})
+                    break
+                case "SHL":
+                    return this.setState({songs: this.state.songs.sort((a,b) => (a.stars.length > b.stars.length ) ? 1 : -1)})
+                    break
+                case "SLH":
+                    return this.setState({songs: this.state.songs.sort((a,b) => (a.stars.length > b.stars.length ) ? -1 : 1)})
+                    break
+                default:
+                    return this.setState({songs: this.state.songs})
+            }
         }
         return (
             <div className="overview">
                 <SongList songs={this.state.songs} />
                 <SongForm onSubmit={addNewSong}/>
                 <SongDelete songs={this.state.songs} handleClickDeleteSongs={emptySongs} />
+                <SongSort sortering={this.state.sort} handleClickSort={sortSongs} />
             </div>
         )
     }
