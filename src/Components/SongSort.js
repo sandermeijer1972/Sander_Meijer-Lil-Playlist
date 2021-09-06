@@ -3,6 +3,9 @@ import React from "react"
 function SongSort({sortering, handleClickSort}) {
     return (
         <form className="sortering">
+            <p>
+                Hoe moeten de liedjes gesorteerd worden?
+            </p>
             <select
                 name="sortering"
                 value={sortering.value}

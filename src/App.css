@@ -40,9 +40,9 @@ h1::after {
     grid-template-rows: auto auto auto auto auto;
     grid-template-areas:
     "S F"
-    "S D"
+    "S D" 
+    "S C"   
     "S V"
-    "S N"
     "S .";
     width: 98%;
 }
@@ -139,6 +139,28 @@ h1::after {
     background-color: red;
 }
 
+.genre {
+    grid-area: C;
+    background-color: #006680;
+    border: solid 3px #002933;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+.genre p {
+    color: #B3F0FF;
+    font-size: 22px;
+    margin: 10px;
+}
+
+.genre select {
+    width: 180px;
+}
+
 .sortering {
     grid-area: V;
     background-color: #006680;
@@ -149,6 +171,12 @@ h1::after {
     margin-right: 20px;
     width: 90%;
     text-align: center;
+}
+
+.sortering p {
+    color: #B3F0FF;
+    font-size: 22px;
+    margin: 10px;
 }
 
 .sortering select {

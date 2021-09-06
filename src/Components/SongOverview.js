@@ -2,6 +2,7 @@ import React from "react"
 import SongList from "./SongList"
 import SongForm from "./SongForm"
 import SongDelete from "./SongDelete"
+import SongChoice from "./SongChoice"
 import SongSort from "./SongSort"
 
 class SongOverview extends React.Component {
@@ -28,8 +29,9 @@ class SongOverview extends React.Component {
                 {id: 16, title: "Domino", artist: "Clouseau", genre: "Vlaamse vrienden", stars: "☆"},
                 {id: 17, title: "I got 5 on it", artist: "Luniz", genre: "No-nonsense Nineties", stars: "☆☆☆"},
                 {id: 18, title: "Dodenrit", artist: "Drs.P", genre: "Nederlandstalig", stars: "☆☆☆☆☆"}
-            ],
+            ],            
             sort: "",
+            selectedGenre: "all"                 
         }
     }
 
@@ -56,10 +58,46 @@ class SongOverview extends React.Component {
         }
         const emptySongs = () => {
             this.setState({songs: []})
-        }
+        }   
+        const selectGenre = event => {
+            const selectedGenreItem = event.target.value
+            console.log(selectedGenreItem)
+            switch(selectedGenreItem) {
+                case "all":
+                    this.setState({selectedGenre: "all"})
+                    break
+                case "Golden oldies":
+                    this.setState({selectedGenre: "Golden oldies"})
+                    break
+                case "'80's Kneiters":
+                    this.setState({selectedGenre: "'80's Kneiters"})
+                    break
+                case "No-nonsense Nineties":
+                    this.setState({selectedGenre: "No-nonsense Nineties"})
+                    break
+                case "21e eeuw":
+                    this.setState({selectedGenre: "21e eeuw"})
+                    break
+                case "Nederlandstalig":
+                    this.setState({selectedGenre: "Nederlandstalig"})
+                    break
+                case "Vlaamse vrienden":
+                    this.setState({selectedGenre: "Vlaamse vrienden"})
+                    break
+                case "Deutsche Schallplatten":
+                    this.setState({selectedGenre: "Deutsche Schallplatten"})
+                    break
+                case "Hoe fouter hoe beter":
+                    this.setState({selectedGenre: "Hoe fouter hoe beter"})
+                    break
+                default:
+                    this.setState({selectedGenre: "all"})
+            }
+        }        
         const sortSongs = event => {
             const selectedItem = event.target.value
             console.log(selectedItem)
+            this.setState({sort: selectedItem})
             switch(selectedItem) {
                 case "TAZ":
                     this.setState({songs: this.state.songs.sort((a,b) => (a.title > b.title) ? 1 : -1)})
@@ -81,13 +119,15 @@ class SongOverview extends React.Component {
                     break
                 default:
                     this.setState({songs: this.state.songs.sort((a,b) => (a.id > b.id) ? 1 : -1)})
+                   
             }
         }
         return (
             <div className="overview">
-                <SongList songs={this.state.songs} />
+                <SongList songs={this.state.songs} selectedGenre={this.state.selectedGenre} />
                 <SongForm onSubmit={addNewSong}/>
                 <SongDelete songs={this.state.songs} handleClickDeleteSongs={emptySongs} />
+                <SongChoice selectedGenre={this.state.selectedGenre} handleClickGenre={selectGenre} />               
                 <SongSort sortering={this.state.sort} handleClickSort={sortSongs} />
             </div>
         )

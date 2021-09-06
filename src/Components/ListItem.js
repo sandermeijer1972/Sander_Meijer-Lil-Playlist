@@ -1,8 +1,8 @@
 import React from "react"
 
-function ListItem({song}) {
+function ListItem({song, genre}) {
     return (
-        <li>
+        <li style={{display: (genre !== song.genre && genre !== "all") && "none" }}>
             <p>{song.title}</p>
             <p>{song.artist}</p>
             <p>{song.genre}</p>
