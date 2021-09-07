@@ -34,7 +34,8 @@ function About() {
                 wel verder in verdiepen.
             </p>
             <p>
-                En voor de nieuwsgierigen: zoek gerust de nummers in mijn playlist eens op!
+                En voor de nieuwsgierigen: zoek gerust de nummers in mijn playlist eens op! En het aantal sterren in de playlist...
+                die horen bij deze nummers allemaal ☆☆☆☆☆ te zijn, maar dat was voor de opdracht niet zo handig.
             </p>
         </div>
     )
