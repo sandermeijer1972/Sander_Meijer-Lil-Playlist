@@ -14,7 +14,30 @@ body {
     border-radius: 10px;
     width: 98%;
     padding: 5px; 
-    text-align: center;   
+    display: grid;
+    grid-template-columns: 80px auto;
+    align-items: center;
+}
+
+.links {
+    list-style-type: none;
+    font-size: 18px;
+    color: #CCF5FF;
+    padding: 0px 20px;
+    margin: 2px;
+}
+
+.links li {
+    margin: 5px 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #CCF5FF;
+}
+
+a:hover {
+    color: #00CCFF;
 }
 
 h1 {
@@ -22,6 +45,7 @@ h1 {
     margin: 0;
     font-family: 'Paytone One', sans-serif;
     font-size: 50px;
+    text-align: center;
 }
 
 h1::before {
@@ -183,6 +207,19 @@ h1::after {
     width: 180px;
 }
 
+.about {
+    width: 80%;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 22px;
+    color: #002933;
+}
+
+.fotos {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
 .footer {
     font-size: 12px;
     text-align: center;
@@ -192,5 +229,6 @@ h1::after {
     color: #CCF5FF;
     border-radius: 10px;
     padding: 5px;
+    margin: 5px;
     width: 98%;
 }
