@@ -15,16 +15,23 @@ body {
     width: 98%;
     padding: 5px; 
     display: grid;
-    grid-template-columns: 80px auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "H"
+    "L";
     align-items: center;
 }
 
 .links {
+    grid-area: L;
     list-style-type: none;
     font-size: 18px;
     color: #CCF5FF;
     padding: 0px 20px;
     margin: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .links li {
@@ -41,33 +48,24 @@ a:hover {
 }
 
 h1 {
+    grid-area: H;
     color: #E6FAFF;
     margin: 0;
     font-family: 'Paytone One', sans-serif;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
-}
-
-h1::before {
-    content: '♫♪';
-    margin: 20px;
-}
-
-h1::after {
-    content: '♪♫';
-    margin: 20px;
 }
 
 .overview {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: auto;
     grid-template-rows: auto auto auto auto auto;
     grid-template-areas:
-    "S F"
-    "S D" 
-    "S C"   
-    "S V"
-    "S .";
+    "F"
+    "S" 
+    "D"   
+    "C"
+    "V";
     width: 98%;
 }
 
@@ -84,7 +82,7 @@ h1::after {
 
 .songs li {
     display: grid;
-    grid-template-columns: 6fr 4fr 3fr 80px;
+    grid-template-rows: auto auto auto auto;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     width: 100%;
@@ -100,7 +98,7 @@ h1::after {
 }
 
 .songs li:nth-child(even) {
-    background-color: #CCF5FF;
+    background-color: #E6FAFF;
 }
 
 .invoer {
@@ -231,4 +229,80 @@ h1::after {
     padding: 5px;
     margin: 5px;
     width: 98%;
+}
+
+@media (max-width: 699px) {
+    .songs li:nth-child(1) {
+        display: none;
+    }  
+    .songs li {
+        border-top: solid 1px #002933;
+    }  
+    .songs li p:nth-child(1)::before {
+        content: "Titel: ";
+        font-weight: bold;
+    }
+    .songs li p:nth-child(2)::before {
+        content: "Artiest: ";
+        font-weight: bold;
+    }
+    .songs li p:nth-child(3)::before {
+        content: "Genre: ";
+        font-weight: bold;
+    }
+    .songs li p:nth-child(4)::before {
+        content: "Sterren: ";
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 700px) {    
+    h1::before {
+        content: '♫♪';
+        margin: 20px;
+    }    
+    h1::after {
+        content: '♪♫';
+        margin: 20px;
+    }
+    .overview {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+        "F ."
+        "F D"
+        "S S" 
+        "C V";
+    } 
+    .songs li {
+        grid-template-columns: 6fr 4fr 3fr 80px;
+        grid-template-rows: 1fr;
+    }
+    .songs li:nth-child(even) {
+        background-color: #CCF5FF;
+    }    
+}
+
+@media (min-width: 1000px) {
+    .header {
+        grid-template-columns: 80px auto;
+        grid-template-areas: 
+        "L H";
+    }
+    .links {
+        flex-direction: column;
+    }
+    h1 {
+        font-size: 50px;
+    }
+    .overview {
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-areas:
+        "S F"
+        "S D" 
+        "S C"   
+        "S V"
+        "S .";
+    }    
 }
